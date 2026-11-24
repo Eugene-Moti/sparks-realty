@@ -1,0 +1,465 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: <html class="dark"> is set by the theme provider.
+   Add `dark` to any element (hero, footer) to force dark styling inside it. */
+/* .light-scope (the admin content area) stays light even when <html> is dark. */
+@custom-variant dark (&:where(.dark, .dark *):not(:where(.light-scope, .light-scope *)));
+
+/* =====================================================================
+   Brand tokens — "Nairobi night luxury"
+   ===================================================================== */
+@theme {
+  /* Type */
+  --font-display: var(--font-marcellus), ui-serif, Georgia, serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --tracking-caps: 0.28em;
+
+  /* Surfaces */
+  --color-ink: #0b0b0c;
+  --color-ink-2: #141416;
+  --color-ink-3: #1d1d20;
+  --color-ivory: #f6f3ec;
+  --color-sand: #ece6d9;
+
+  /* Gold — type, hairlines, focus rings. Never large fills.
+     On light surfaces use gold-700+ for text (AA: #7E5E1C on ivory = 5.4:1). */
+  --color-gold-50: #fcf7ea;
+  --color-gold-100: #f9edcb;
+  --color-gold-200: #f7d27a; /* light */
+  --color-gold-300: #ebc368;
+  --color-gold-400: #e0b458; /* base */
+  --color-gold-500: #c99d45;
+  --color-gold-600: #b0862f; /* deep */
+  --color-gold-700: #7e5e1c;
+  --color-gold-800: #5e4615;
+  --color-gold-900: #3d2e0e;
+  --color-gold: #e0b458;
+  --color-gold-light: #f7d27a;
+  --color-gold-deep: #b0862f;
+
+  /* Green — the growth bars and arrow in the mark. Converting CTAs, success.
+     Solid buttons use green-600 with ivory text (AA 4.7:1). */
+  --color-green-50: #eef6e9;
+  --color-green-100: #d7eacb;
+  --color-green-200: #b4d99b;
+  --color-green-300: #94c86f;
+  --color-green-400: #76b848; /* light */
+  --color-green-500: #549638; /* base */
+  --color-green-600: #3e7a28; /* deep */
+  --color-green-700: #2f5f1e;
+  --color-green-800: #224516;
+  --color-green-900: #152b0e;
+  --color-green: #549638;
+  --color-green-light: #76b848;
+  --color-green-deep: #3e7a28;
+  --color-green-9: #549638; /* used by the ReceiptPrinter success tick */
+
+  /* Warm neutral scale, ivory (1) → ink (12). Fixed in both themes. */
+  --color-grayscale-1: #f6f3ec;
+  --color-grayscale-2: #ece8df;
+  --color-grayscale-3: #dfdad0;
+  --color-grayscale-4: #cfc9be;
+  --color-grayscale-5: #b8b2a7;
+  --color-grayscale-6: #9d978d;
+  --color-grayscale-7: #807b73;
+  --color-grayscale-8: #67635d;
+  --color-grayscale-9: #4e4b47;
+  --color-grayscale-10: #363432;
+  --color-grayscale-11: #222124;
+  --color-grayscale-12: #0b0b0c;
+
+  --color-danger: #c2412d;
+
+  /* Shape */
+  --radius-card: 1.5rem;
+  --radius-card-lg: 1.75rem;
+  --radius-control: 0.875rem;
+
+  /* Long, soft shadows */
+  --shadow-soft: 0 1px 2px rgb(11 11 12 / 0.04), 0 12px 32px -12px rgb(11 11 12 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(11 11 12 / 0.05), 0 28px 60px -24px rgb(11 11 12 / 0.28);
+  --shadow-glow-gold: 0 0 0 1px rgb(224 180 88 / 0.25), 0 18px 48px -18px rgb(224 180 88 / 0.35);
+
+  /* Motion */
+  --ease-out-brand: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-brand: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --animate-shimmer: shimmer 1.6s var(--ease-in-out-brand) infinite;
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-fade-in: fade-in 200ms var(--ease-out-brand);
+  --animate-fade-out: fade-out 160ms var(--ease-out-brand);
+  --animate-dialog-in: dialog-in 240ms var(--ease-out-brand);
+  --animate-dialog-out: dialog-out 160ms var(--ease-out-brand);
+  --animate-sheet-in-right: sheet-in-right 320ms var(--ease-out-brand);
+  --animate-sheet-out-right: sheet-out-right 220ms var(--ease-in-out-brand);
+  --animate-sheet-in-left: sheet-in-left 320ms var(--ease-out-brand);
+  --animate-sheet-out-left: sheet-out-left 220ms var(--ease-in-out-brand);
+  --animate-sheet-in-bottom: sheet-in-bottom 320ms var(--ease-out-brand);
+  --animate-sheet-out-bottom: sheet-out-bottom 220ms var(--ease-in-out-brand);
+  --animate-tooltip-in: tooltip-in 160ms var(--ease-out-brand);
+  --animate-pulse-once: pulse-ring 1.6s var(--ease-out-brand) 2;
+  /* Hero headline: words sharpen in one by one (CSS, so it plays from first paint). Inline
+     words keep the headline one text block — the LCP element. */
+  --animate-word-in: word-in 900ms var(--ease-out-brand) both;
+  /* Hero Ken Burns: compositor-only (no JS per frame). Slide 7s + 1.6s crossfade. */
+  --animate-ken-burns: ken-burns 8.6s linear both;
+
+  @keyframes ken-burns { from { transform: scale(1); } to { transform: scale(1.08); } }
+  @keyframes word-in { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
+  @keyframes shimmer {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+  @keyframes dialog-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes dialog-out {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.98); }
+  }
+  @keyframes sheet-in-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
+  @keyframes sheet-out-right { from { transform: translateX(0); } to { transform: translateX(100%); } }
+  @keyframes sheet-in-left { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+  @keyframes sheet-out-left { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+  @keyframes sheet-in-bottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @keyframes sheet-out-bottom { from { transform: translateY(0); } to { transform: translateY(100%); } }
+  @keyframes tooltip-in {
+    from { opacity: 0; transform: translateY(2px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgb(84 150 56 / 0.55); }
+    100% { box-shadow: 0 0 0 18px rgb(84 150 56 / 0); }
+  }
+}
+
+/* =====================================================================
+   Semantic tokens (switch with the theme)
+   ===================================================================== */
+:root {
+  --background: var(--color-ivory);
+  --foreground: var(--color-ink);
+  --surface: #fbf9f4;
+  --surface-2: var(--color-sand);
+  --muted: var(--color-grayscale-8);
+  --accent: var(--color-gold-700); /* gold text on light: AA */
+  --hairline: rgb(176 134 47 / 0.22);
+  --border: rgb(11 11 12 / 0.1);
+  --ring: var(--color-gold-600);
+  --overlay: rgb(11 11 12 / 0.55);
+}
+
+.dark {
+  --background: var(--color-ink);
+  --foreground: var(--color-ivory);
+  --surface: var(--color-ink-2);
+  --surface-2: var(--color-ink-3);
+  --muted: var(--color-grayscale-5);
+  --accent: var(--color-gold);
+  --hairline: rgb(224 180 88 / 0.2);
+  --border: rgb(246 243 236 / 0.1);
+  --ring: var(--color-gold);
+  --overlay: rgb(0 0 0 / 0.7);
+}
+
+/* Admin work area: always the light palette (the sidebar opts back in with .dark). */
+.dark .light-scope,
+.light-scope {
+  --background: var(--color-ivory);
+  --foreground: var(--color-ink);
+  --surface: #fbf9f4;
+  --surface-2: var(--color-sand);
+  --muted: var(--color-grayscale-8);
+  --accent: var(--color-gold-700);
+  --hairline: rgb(176 134 47 / 0.22);
+  --border: rgb(11 11 12 / 0.1);
+  --ring: var(--color-gold-600);
+  --overlay: rgb(11 11 12 / 0.55);
+  color-scheme: light;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-hairline: var(--hairline);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-overlay: var(--overlay);
+}
+
+/* =====================================================================
+   Base
+   ===================================================================== */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Elements forced dark (hero, footer) also need their own colours. */
+  .dark:not(html) {
+    color: var(--foreground);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  *, ::before, ::after {
+    border-color: var(--border);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-gold) 35%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* =====================================================================
+   Utilities
+   ===================================================================== */
+
+/* Small tracked caps, like "REALTY" in the logo. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll reveals (components/motion/reveal.tsx): fade + 16px rise, staggered in
+   groups. transform/opacity only. Static under reduced motion; <noscript> in the
+   root layout shows everything without JavaScript.
+   --------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  translate: 0 16px;
+  transition:
+    opacity 700ms var(--ease-out-brand),
+    translate 700ms var(--ease-out-brand);
+  transition-delay: calc(var(--reveal-delay, 0ms) + var(--reveal-i, 0) * var(--reveal-stagger, 0ms));
+}
+[data-reveal][data-revealed],
+[data-reveal-group][data-revealed] [data-reveal] {
+  opacity: 1;
+  translate: none;
+}
+[data-reveal-group] > [data-reveal]:nth-child(2) { --reveal-i: 1; }
+[data-reveal-group] > [data-reveal]:nth-child(3) { --reveal-i: 2; }
+[data-reveal-group] > [data-reveal]:nth-child(4) { --reveal-i: 3; }
+[data-reveal-group] > [data-reveal]:nth-child(5) { --reveal-i: 4; }
+[data-reveal-group] > [data-reveal]:nth-child(6) { --reveal-i: 5; }
+[data-reveal-group] > [data-reveal]:nth-child(7) { --reveal-i: 6; }
+[data-reveal-group] > [data-reveal]:nth-child(8) { --reveal-i: 7; }
+[data-reveal-group] > [data-reveal]:nth-child(9) { --reveal-i: 8; }
+[data-reveal-group] > [data-reveal]:nth-child(10) { --reveal-i: 9; }
+[data-reveal-group] > [data-reveal]:nth-child(11) { --reveal-i: 10; }
+[data-reveal-group] > [data-reveal]:nth-child(12) { --reveal-i: 11; }
+[data-reveal-group] > [data-reveal]:nth-child(n + 13) { --reveal-i: 12; }
+
+/* Section-heading hairline that draws in (components/ui/section-heading.tsx). */
+[data-reveal-line] {
+  transform: scaleX(0);
+  transition: transform 700ms var(--ease-out-brand) 150ms;
+}
+[data-reveal-line][data-revealed] { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal-line] {
+    opacity: 1;
+    translate: none;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Below-the-fold sections: the browser skips their style, layout and paint until they near
+   the viewport (still in the accessibility tree and find-in-page). */
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/* Subtle film grain for dark sections. Parent must be positioned. */
+@utility grain {
+  isolation: isolate;
+  &::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/textures/plastic-noise.webp");
+    background-size: 180px 180px;
+    opacity: 0.09;
+    mix-blend-mode: overlay;
+  }
+}
+
+/* 1px gold-at-20% hairline. */
+@utility hairline {
+  border-width: 1px;
+  border-color: var(--hairline);
+}
+
+/* Glass bar used by the scrolled header and the hero search panel. */
+@utility glass {
+  background-color: color-mix(in oklab, var(--background) 72%, transparent);
+  backdrop-filter: saturate(1.4) blur(18px);
+  -webkit-backdrop-filter: saturate(1.4) blur(18px);
+}
+
+@utility text-gold-gradient {
+  background-image: linear-gradient(180deg, var(--color-gold-200), var(--color-gold-400) 55%, var(--color-gold-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* =====================================================================
+   Map (MapLibre) — price pills, clusters, popup
+   ===================================================================== */
+.sp-map .maplibregl-ctrl-attrib {
+  font-size: 10px;
+}
+.sp-pin {
+  cursor: pointer;
+  border-radius: 9999px;
+  border: 1px solid rgb(11 11 12 / 0.12);
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  padding: 4px 10px;
+  font: 600 12px/1 var(--font-mono);
+  white-space: nowrap;
+  box-shadow: 0 6px 16px -6px rgb(11 11 12 / 0.45);
+  transition: background-color 160ms var(--ease-out-brand), color 160ms var(--ease-out-brand), scale 160ms var(--ease-out-brand);
+}
+.sp-pin:hover,
+.sp-pin.is-active {
+  background: var(--color-ink);
+  color: var(--color-gold);
+  scale: 1.12;
+  z-index: 10;
+}
+.sp-cluster {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 9999px;
+  background: var(--color-green-600);
+  color: var(--color-ivory);
+  font: 600 13px/1 var(--font-mono);
+  box-shadow: 0 0 0 6px rgb(84 150 56 / 0.25), 0 8px 20px -8px rgb(11 11 12 / 0.5);
+}
+.sp-popup .maplibregl-popup-content {
+  padding: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow-lift);
+}
+.sp-popup .maplibregl-popup-tip {
+  border-top-color: var(--surface);
+  border-bottom-color: var(--surface);
+}
+.sp-popup .maplibregl-popup-close-button {
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: rgb(11 11 12 / 0.55);
+  color: var(--color-ivory);
+  margin: 6px;
+}
+
+/* =====================================================================
+   View transitions (React <ViewTransition>): card photo → listing hero
+   ===================================================================== */
+::view-transition-group(.sp-morph) {
+  animation-duration: 520ms;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+::view-transition-image-pair(.sp-morph) {
+  animation-name: sp-via-blur;
+}
+@keyframes sp-via-blur {
+  35% { filter: blur(3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* =====================================================================
+   Lightbox (yet-another-react-lightbox) brand overrides
+   ===================================================================== */
+.sp-lightbox {
+  --yarl__color_backdrop: rgb(11 11 12 / 0.97);
+  --yarl__color_button: rgb(246 243 236 / 0.8);
+  --yarl__color_button_active: var(--color-gold);
+  --yarl__thumbnails_container_background_color: rgb(11 11 12 / 0.97);
+  --yarl__thumbnails_thumbnail_background: var(--color-ink-3);
+  --yarl__thumbnails_thumbnail_border: 1px solid transparent;
+  --yarl__thumbnails_thumbnail_active_border_color: var(--color-gold);
+  --yarl__thumbnails_thumbnail_border_radius: 10px;
+  --yarl__counter_filter: none;
+  font-family: var(--font-sans);
+}
+.sp-lightbox .yarl__button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 9999px;
+}

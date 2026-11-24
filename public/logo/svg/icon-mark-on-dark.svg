@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1347 450" role="img" aria-label="Sparks Properties"><defs>
+<linearGradient id="gi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7D27A"/><stop offset=".55" stop-color="#E0B458"/><stop offset="1" stop-color="#B0862F"/></linearGradient>
+<linearGradient id="gfi" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#F7D27A"/><stop offset=".55" stop-color="#E0B458"/><stop offset="1" stop-color="#B0862F"/></linearGradient>
+<linearGradient id="ni" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86C858"/><stop offset="1" stop-color="#3E7A28"/></linearGradient>
+<linearGradient id="nsi" gradientUnits="userSpaceOnUse" x1="640" y1="415" x2="960" y2="110"><stop offset="0" stop-color="#3E7A28"/><stop offset="1" stop-color="#86C858"/></linearGradient>
+<clipPath id="ci"><rect x="0" y="0" width="1347" height="415"/></clipPath>
+<mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="1347" height="450"><rect width="1347" height="450" fill="#fff"/>
+<path d="M400 170 L650 425 L925 150 L925 470 L400 470 Z" fill="#000"/>
+<path d="M120 455 L400 170 L650 425 L925 150" fill="none" stroke="#000" stroke-width="96" stroke-linejoin="miter"/></mask>
+</defs><g clip-path="url(#ci)">
+ <g fill="url(#ni)" mask="url(#mi)">
+  <rect x="566" y="200" width="48" height="230" rx="2"/>
+  <path d="M642 128 L692 120 L692 430 L642 430 Z"/>
+  <rect x="730" y="40" width="50" height="390" rx="2"/>
+ </g>
+ <g fill="none" stroke="url(#gi)" stroke-width="58" stroke-linejoin="miter" stroke-miterlimit="10">
+  <path d="M110 445 L400 160 L655 425"/><path d="M985 190 L1215 430"/>
+ </g>
+ <path d="M640 430 L915 158" fill="none" stroke="url(#nsi)" stroke-width="58"/>
+</g>
+<path d="M848 118 L962 110 L956 226 Z" fill="url(#ni)"/>
+<g fill="url(#gi)"><rect x="352" y="282" width="46" height="50" rx="3"/><rect x="352" y="342" width="46" height="50" rx="3"/><rect x="408" y="282" width="46" height="50" rx="3"/><rect x="408" y="342" width="46" height="50" rx="3"/><rect x="876" y="282" width="46" height="50" rx="3"/><rect x="876" y="342" width="46" height="50" rx="3"/><rect x="932" y="282" width="46" height="50" rx="3"/><rect x="932" y="342" width="46" height="50" rx="3"/></g></svg>

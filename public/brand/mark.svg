@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Sparks Properties"><defs>
+<linearGradient id="gc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7D27A"/><stop offset=".55" stop-color="#E0B458"/><stop offset="1" stop-color="#B0862F"/></linearGradient>
+<linearGradient id="gfc" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#F7D27A"/><stop offset=".55" stop-color="#E0B458"/><stop offset="1" stop-color="#B0862F"/></linearGradient>
+<linearGradient id="nc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86C858"/><stop offset="1" stop-color="#3E7A28"/></linearGradient>
+<linearGradient id="nsc" gradientUnits="userSpaceOnUse" x1="640" y1="415" x2="960" y2="110"><stop offset="0" stop-color="#3E7A28"/><stop offset="1" stop-color="#86C858"/></linearGradient>
+<clipPath id="cc"><rect x="0" y="0" width="1347" height="415"/></clipPath>
+<mask id="mc" maskUnits="userSpaceOnUse" x="0" y="0" width="1347" height="450"><rect width="1347" height="450" fill="#fff"/>
+<path d="M400 170 L650 425 L925 150 L925 470 L400 470 Z" fill="#000"/>
+<path d="M120 455 L400 170 L650 425 L925 150" fill="none" stroke="#000" stroke-width="96" stroke-linejoin="miter"/></mask>
+</defs>
+<path d="M78 300 L256 124 L434 300" fill="none" stroke="url(#gc)" stroke-width="50" stroke-linejoin="miter" stroke-miterlimit="10"/>
+<g fill="url(#nc)">
+ <rect x="172" y="330" width="42" height="68" rx="4"/>
+ <rect x="235" y="292" width="42" height="106" rx="4"/>
+ <rect x="298" y="262" width="42" height="136" rx="4"/>
+</g>
+<rect x="150" y="412" width="212" height="10" rx="5" fill="url(#gc)"/>
+</svg>
