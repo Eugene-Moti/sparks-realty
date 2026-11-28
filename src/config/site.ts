@@ -32,7 +32,7 @@ export const siteConfig = {
   shortName: "Sparks Properties",
   tagline: "Homes for sale, long-term rentals and short stays across Nairobi.",
   description:
-    "Sparks Properties is a Nairobi real-estate agency in Kileleshwa — homes for sale, long-term rentals and furnished short stays in Kileleshwa, Westlands, Kilimani, Lavington, Riverside, Karen and beyond.",
+    "Sparks Properties is a Nairobi real-estate agency on Arboretum Drive — homes for sale, long-term rentals and furnished short stays in Kileleshwa, Westlands, Kilimani, Lavington, Riverside, Karen and beyond.",
   locale: "en_KE",
 
   contact: {
@@ -49,11 +49,19 @@ export const siteConfig = {
     },
     email: "sparkspropertieshomes@gmail.com",
     address: {
-      locality: "Kileleshwa",
+      building: "Arbor House Business Centre",
+      street: "Arboretum Drive",
+      streetAddress: "Arbor House Business Centre, Arboretum Drive",
       city: "Nairobi",
       country: "Kenya",
       countryCode: "KE",
-      display: "Kileleshwa, Nairobi, Kenya",
+      display: "Arbor House Business Centre, Arboretum Drive, Nairobi",
+    },
+    /** The office's Google Maps place (cid from the "Share → Embed a map" code). */
+    maps: {
+      directionsUrl: "https://maps.google.com/?cid=11065213940073806534",
+      embedUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7977.635259296739!2d36.78933314461508!3d-1.2832760186435834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17341ce3ffff%3A0x998f8973d5ccbac6!2sArbor%20House%20Business%20Centre!5e0!3m2!1sen!2ske!4v1795522204590!5m2!1sen!2ske",
     },
     officeHours: "Mon–Fri 8:00–18:00 · Sat 9:00–15:00",
   },

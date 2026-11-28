@@ -5,24 +5,19 @@ import type { ReactNode } from "react";
 import { SocialIcons } from "@/components/brand/social-icons";
 import { ContactForm } from "@/components/forms/contact-form";
 import { PageHero } from "@/components/layout/page-hero";
-import { LocationReveal } from "@/components/property/detail/location-reveal";
+import { ClickToLoadFrame } from "@/components/privacy/click-to-load-frame";
+import { siteConfig } from "@/config/site";
 import { formatPhoneDisplay, telLink, whatsappLink } from "@/lib/format";
-import { getAreaBySlug } from "@/lib/queries/areas";
 import { getSiteSettings } from "@/lib/queries/site-settings";
 
 export const metadata: Metadata = {
   title: "Contact us",
-  description: "Call, WhatsApp, email or visit Sparks Properties in Kileleshwa, Nairobi — or send us a message and an agent will get back to you.",
+  description: "Call, WhatsApp, email or visit Sparks Properties at Arbor House Business Centre, Arboretum Drive, Nairobi — or send us a message and an agent will get back to you.",
   alternates: { canonical: "/contact" },
 };
 
-/** Centre of Kileleshwa if the area has no coordinates yet (the map shows an area, not a pin). */
-const KILELESHWA = { lat: -1.2806, lng: 36.7837 };
-
 export default async function ContactPage() {
-  const [settings, area] = await Promise.all([getSiteSettings(), getAreaBySlug("kileleshwa")]);
-  const lat = area?.latitude ?? KILELESHWA.lat;
-  const lng = area?.longitude ?? KILELESHWA.lng;
+  const settings = await getSiteSettings();
 
   return (
     <>
@@ -57,9 +52,12 @@ export default async function ContactPage() {
             <Channel icon={<MapPinIcon />} label="Office" value={settings.address} />
           </ul>
 
-          <LocationReveal lat={lat} lng={lng} label="Our office area, Kileleshwa" radius={700} zoom={13.8} />
-          <p className="-mt-3 text-muted text-xs">
-            Visits are by appointment — WhatsApp us and we&apos;ll share directions.
+          <ClickToLoadFrame kind="map" url={siteConfig.contact.maps.embedUrl} title="Arbor House Business Centre, Arboretum Drive" />
+          <p className="-mt-3 flex flex-wrap items-center justify-between gap-2 text-muted text-xs">
+            <span>Visits are by appointment — WhatsApp us before you come.</span>
+            <a href={siteConfig.contact.maps.directionsUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-accent underline-offset-2 hover:underline">
+              Get directions in Google Maps
+            </a>
           </p>
 
           <div className="flex flex-col gap-3 rounded-(--radius-card) border border-hairline p-5">

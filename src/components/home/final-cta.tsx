@@ -12,10 +12,11 @@ import Link from "next/link";
 import { Magnetic } from "@/components/motion/magnetic";
 import { Reveal, RevealGroup } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 import { formatPhoneDisplay, telLink, whatsappLink } from "@/lib/format";
 import type { SiteSettings } from "@/lib/queries/site-settings";
 
-const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Sparks Properties+Realty+Kileleshwa+Nairobi";
+const MAPS_URL = siteConfig.contact.maps.directionsUrl;
 
 /** Closing section: list with us / book a viewing, contacts and the office "map". */
 export function FinalCta({ settings }: { settings: SiteSettings }) {
@@ -71,7 +72,10 @@ export function FinalCta({ settings }: { settings: SiteSettings }) {
         <Reveal className="grid gap-6 rounded-(--radius-card-lg) border border-hairline bg-surface p-8 sm:p-10 lg:col-span-2 lg:grid-cols-[1fr_1.3fr] lg:items-center">
           <div className="flex flex-col gap-5">
             <p className="eyebrow">Visit the office</p>
-            <p className="font-display text-3xl">Kileleshwa, Nairobi</p>
+            <div className="flex flex-col gap-1">
+              <p className="font-display text-3xl">Arbor House Business Centre</p>
+              <p className="text-muted text-sm">Arboretum Drive, Nairobi</p>
+            </div>
             <ul className="flex flex-col gap-3 text-sm">
               <li>
                 <a href={telLink(settings.phone)} className="flex items-center gap-3 hover:text-accent">

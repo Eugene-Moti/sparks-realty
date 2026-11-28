@@ -10,7 +10,7 @@ These terms apply when you use the **Sparks Properties** website (including any 
 
 ## 1. Who we are
 
-The site is run by **Sparks Properties**, a real-estate agency based in Kileleshwa, Nairobi, Kenya. You can reach us on **+254 792 573 443** (phone and WhatsApp) or **sparkspropertieshomes@gmail.com**.
+The site is run by **Sparks Properties**, a real-estate agency based at Arbor House Business Centre, Arboretum Drive, Nairobi, Kenya. You can reach us on **+254 792 573 443** (phone and WhatsApp) or **sparkspropertieshomes@gmail.com**.
 
 ## 2. Listings and information on the site
 
@@ -76,4 +76,4 @@ These terms are governed by the **laws of Kenya**. If a dispute can't be settled
 
 ## 13. Contact us
 
-Questions about these terms? Call or WhatsApp **+254 792 573 443**, email **sparkspropertieshomes@gmail.com**, or visit our office in Kileleshwa, Nairobi.
+Questions about these terms? Call or WhatsApp **+254 792 573 443**, email **sparkspropertieshomes@gmail.com**, or visit our office at Arbor House Business Centre, Arboretum Drive, Nairobi.

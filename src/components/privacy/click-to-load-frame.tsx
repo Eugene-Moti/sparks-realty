@@ -1,6 +1,6 @@
 "use client";
 
-import { CubeIcon } from "@phosphor-icons/react";
+import { CubeIcon, MapTrifoldIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -16,6 +16,7 @@ function providerName(url: string): string {
       "cloudpano.com": "CloudPano",
       "momento360.com": "Momento360",
       "youtube.com": "YouTube",
+      "google.com": "Google Maps",
     };
     return known[host] ?? host;
   } catch {
@@ -25,7 +26,7 @@ function providerName(url: string): string {
 
 /**
  * Click-to-load wrapper for any third-party iframe that isn't a video
- * platform (Matterport / Kuula 3D tours). Same privacy rule as
+ * platform (Matterport / Kuula 3D tours, the Google Maps office map). Same privacy rule as
  * ClickToLoadEmbed: nothing is requested from the provider until the visitor clicks.
  */
 export function ClickToLoadFrame({
@@ -33,12 +34,15 @@ export function ClickToLoadFrame({
   title,
   poster,
   className,
+  kind = "tour",
 }: {
   url: string;
   title: string;
   /** Our own image (e.g. the listing cover photo). */
   poster?: string | null;
   className?: string;
+  /** "tour" (3D tour, the default) or "map" (a Google Maps embed). */
+  kind?: "tour" | "map";
 }) {
   const [loaded, setLoaded] = useState(false);
   const provider = providerName(url);
@@ -82,10 +86,18 @@ export function ClickToLoadFrame({
         type="button"
         onClick={() => setLoaded(true)}
         className="absolute inset-0 z-20 grid cursor-pointer place-items-center"
-        aria-label={`Start the 3D tour: ${title} (loads from ${provider})`}
+        aria-label={`${kind === "map" ? "Load the map" : "Start the 3D tour"}: ${title} (loads from ${provider})`}
       >
         <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-ink/55 px-5 py-3 font-medium text-gold text-sm backdrop-blur-md transition-[transform,border-color] duration-300 group-hover:scale-105 group-hover:border-gold">
-          <CubeIcon className="size-5" /> Start 3D tour
+          {kind === "map" ? (
+            <>
+              <MapTrifoldIcon className="size-5" /> Show map
+            </>
+          ) : (
+            <>
+              <CubeIcon className="size-5" /> Start 3D tour
+            </>
+          )}
         </span>
       </button>
     </div>

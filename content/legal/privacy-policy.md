@@ -15,7 +15,7 @@ By using this website or sending us your details, you confirm that you have read
 
 Sparks Properties is the **data controller** for the personal data described here.
 
-- **Office:** Kileleshwa, Nairobi, Kenya
+- **Office:** Arbor House Business Centre, Arboretum Drive, Nairobi, Kenya
 - **Phone / WhatsApp:** +254 792 573 443
 - **Email:** sparkspropertieshomes@gmail.com
 - **ODPC registration number:** [to be added]
@@ -64,7 +64,7 @@ We **never sell** your personal data. We share it only with:
   - Vercel: website hosting
   - Our email-delivery provider, which sends enquiry notifications
   - An analytics provider
-  - Google/YouTube, TikTok, Instagram and Facebook, when you choose to play an embedded video or follow a social link
+  - Google/YouTube, TikTok, Instagram and Facebook, when you choose to play an embedded video, load our office map (Google Maps) or follow a social link
 - **Professional advisers**, such as lawyers, auditors and conveyancers, where needed for a transaction
 - **Authorities**, when the law requires it or to protect our rights or someone's safety
 
@@ -124,5 +124,5 @@ We may update this policy from time to time. The "Last updated" date at the top 
 
 ## 13. Contact us
 
-**Sparks Properties** — Kileleshwa, Nairobi, Kenya
+**Sparks Properties** — Arbor House Business Centre, Arboretum Drive, Nairobi, Kenya
 📞 / WhatsApp: +254 792 573 443 · ✉️ sparkspropertieshomes@gmail.com

@@ -47,7 +47,7 @@ Supabase dashboard → **Authentication**:
   - Add the domain `<your-domain>` (verify with a DNS TXT record).
   - Submit `https://www.<your-domain>/sitemap.xml`.
   - Use "URL Inspection" on the homepage to request indexing.
-- **Google Business Profile:** set the website to `https://www.<your-domain>`, the phone to +254 792 573 443 (with WhatsApp), and the address to Kileleshwa, Nairobi.
+- **Google Business Profile:** set the website to `https://www.<your-domain>`, the phone to +254 792 573 443 (with WhatsApp), and the address to Arbor House Business Centre, Arboretum Drive, Nairobi.
 - **Optional, Google Analytics 4:**
   - Create a property and add `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-…` in Vercel → Settings → Environment Variables, then redeploy.
   - It loads only after a visitor accepts cookies.

@@ -131,7 +131,7 @@ export function AgentCard({ agent }: { agent: PropertyAgent | null }) {
       </div>
       <div className="min-w-0">
         <p className="truncate font-display text-lg leading-tight">{agent?.name ?? "Sparks Properties"}</p>
-        <p className="text-muted text-xs">{agent ? "Your agent for this home" : "Kileleshwa office · replies fast on WhatsApp"}</p>
+        <p className="text-muted text-xs">{agent ? "Your agent for this home" : "Arboretum Drive office · replies fast on WhatsApp"}</p>
       </div>
     </div>
   );

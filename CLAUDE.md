@@ -3,7 +3,7 @@
 You are building the public website and admin panel for **Sparks Properties**, a Nairobi real-estate agency (sales, long-term rentals, short stays). The goal is to clearly beat local competitors (RE/MAX Kenya agent sites, realtyboris.com, sarabirealtygroup.co.ke) on design, motion, speed and lead conversion. Treat this file as standing instructions; `docs/BUILD_PROMPT.md` holds the phase-by-phase tasks.
 
 ## Company facts (single source of truth — also seeded in `site_settings`)
-- Name: Sparks Properties ("Your trusted real estate company") · Office: Kileleshwa, Nairobi, Kenya (carried over from the Homes28 template — confirm the real office)
+- Name: Sparks Properties ("Your trusted real estate company") · Office: Arbor House Business Centre, Arboretum Drive, Nairobi (Google Maps place in `siteConfig.contact.maps`)
 - Phone & WhatsApp: **+254792573443** → display `+254 792 573 443`, `tel:+254792573443`, `https://wa.me/254792573443` (keep it in one config file: `src/config/site.ts`; `site_settings.phone = '+254792573443'`, `site_settings.whatsapp = '254792573443'`)
 - Email: sparkspropertieshomes@gmail.com
 - YouTube: https://www.youtube.com/@sparkspropertieshomes

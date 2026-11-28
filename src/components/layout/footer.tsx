@@ -47,7 +47,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
             <p className="max-w-md text-ivory/70 leading-relaxed">
               A Nairobi agency for people who care how home feels. Homes for sale, long-term
               rentals and furnished short stays — found, viewed and handled with care from our
-              office in Kileleshwa.
+              office on Arboretum Drive.
             </p>
             <div className="mt-2 flex flex-col gap-3 rounded-(--radius-card) border border-hairline bg-ink-2/60 p-5 sm:p-6">
               <h2 className="font-display text-xl">New listings, first</h2>

@@ -64,10 +64,11 @@ export default async function HomePage() {
     email: settings.email,
     address: {
       "@type": "PostalAddress",
-      addressLocality: siteConfig.contact.address.locality,
-      addressRegion: siteConfig.contact.address.city,
+      streetAddress: siteConfig.contact.address.streetAddress,
+      addressLocality: siteConfig.contact.address.city,
       addressCountry: siteConfig.contact.address.countryCode,
     },
+    hasMap: siteConfig.contact.maps.directionsUrl,
     areaServed: areas.map((a) => a.name),
     sameAs: Object.values(settings.social),
   };

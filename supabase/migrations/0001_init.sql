@@ -248,7 +248,7 @@ create table public.site_settings (           -- single row, editable in admin
   phone           text default '0792573443',
   whatsapp        text default '254792573443',
   email           text default 'sparkspropertieshomes@gmail.com',
-  address         text default 'Kileleshwa, Nairobi, Kenya',
+  address         text default 'Arbor House Business Centre, Arboretum Drive, Nairobi',
   office_hours    text default 'Mon–Fri 8:00–18:00 · Sat 9:00–15:00',
   youtube         text default 'https://www.youtube.com/@sparkspropertieshomes',
   facebook        text default 'https://www.facebook.com/share/1KwwK8DdwD/',

@@ -17,7 +17,7 @@ import { getPublicTeam, type TeamMember } from "@/lib/queries/team";
 export const metadata: Metadata = {
   title: "About Sparks Properties",
   description:
-    "Sparks Properties is a Nairobi real-estate agency based in Kileleshwa — sales, long-term rentals and short stays, with honest advice and homes we've visited ourselves.",
+    "Sparks Properties is a Nairobi real-estate agency based on Arboretum Drive — sales, long-term rentals and short stays, with honest advice and homes we've visited ourselves.",
   alternates: { canonical: "/about" },
 };
 
@@ -54,7 +54,7 @@ export default async function AboutPage() {
             A Nairobi agency that <span className="text-gold-gradient">shows up.</span>
           </>
         }
-        description="Sparks Properties helps people buy, rent and stay in Nairobi's best neighbourhoods — from our office in Kileleshwa."
+        description="Sparks Properties helps people buy, rent and stay in Nairobi's best neighbourhoods — from our office at Arbor House, Arboretum Drive."
         crumbs={[{ name: "About", href: "/about" }]}
       />
 
